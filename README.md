@@ -4,18 +4,17 @@ Simple API with User Authentication and Create and View Posts
 ## Routes
 
 ### User Authentication Routes
-```
-/auth/register -> creates new user
-/auth/login -> validates user credentionals and return access token
-/profile -> view user details based on access token provided
-```
+
+> /auth/register -> creates new user
+> /auth/login -> validates user credentionals and return access token
+> /profile -> view user details based on access token provided
+
 
 ### Post Routes
-```
-/posts -> view all posts
-/posts/user -> view user's post based on access token
-/posts (POST METHOD) -> creates new post with user access token
-```
+
+> /posts -> view all posts
+> /posts/user -> view user's post based on access token
+> /posts (POST METHOD) -> creates new post with user access token
 
 ## Description
 
