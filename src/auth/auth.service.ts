@@ -48,14 +48,14 @@ export class AuthService {
       return {
         id: user.id,
         name: user.name,
-        email: user.email
-      }
+        email: user.email,
+      };
     } else {
       throw new HttpException('Incorrect Password', HttpStatus.UNAUTHORIZED);
     }
   }
 
   async generateAccessToken(id) {
-    return this.jwtService.sign({sub: id});
+    return this.jwtService.sign({ sub: id });
   }
 }
