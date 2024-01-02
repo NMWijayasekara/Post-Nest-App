@@ -20,14 +20,12 @@ Simple API with User Authentication and Create and View Posts
 
 > /posts **(POST)** -> creates new post with user access token
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
 
 ```bash
 $ pnpm install
+$ pnpx prisma generate
 ```
 
 ## Running the app
@@ -38,7 +36,4 @@ $ pnpm run start
 
 # watch mode
 $ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
 ```
