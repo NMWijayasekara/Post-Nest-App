@@ -28,6 +28,7 @@ Simple API with User Authentication and Create and View Posts
 
 ```bash
 $ pnpm install
+$ pnpx prisma generate
 ```
 
 ## Running the app
