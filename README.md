@@ -1,6 +1,22 @@
 # Post Nest App
 Simple API with User Authentication and Create and View Posts
 
+## Routes
+
+### User Authentication Routes
+```
+/auth/register -> creates new user
+/auth/login -> validates user credentionals and return access token
+/profile -> view user details based on access token provided
+```
+
+### Post Routes
+```
+/posts -> view all posts
+/posts/user -> view user's post based on access token
+/posts (POST METHOD) -> creates new post with user access token
+```
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
@@ -23,30 +39,3 @@ $ pnpm run start:dev
 # production mode
 $ pnpm run start:prod
 ```
-
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
