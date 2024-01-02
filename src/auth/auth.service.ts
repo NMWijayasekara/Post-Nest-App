@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
 import { compare, hash } from 'bcrypt';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -10,7 +11,7 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async register(data: { name: string; email: string; password: string }) {
+  async register(data: Prisma.UserCreateInput) {
     const hashedPassword = await hash(data.password, 12);
 
     try {
