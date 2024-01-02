@@ -18,11 +18,9 @@ export class PostsController {
     }
 
     @UseGuards(AuthGuard())
-    @Post('create')
+    @Post()
     async createPost(@Body() data, @Request() req) {
         const new_post = await this.postsService.createPost({userId: req.user.id, title: data.title, body: data.body})
         return new_post
     }
-
-
 }
