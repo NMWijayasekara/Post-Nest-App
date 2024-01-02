@@ -6,8 +6,8 @@ import { AuthGuard } from '@nestjs/passport';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('profile')
   @UseGuards(AuthGuard())
+  @Get('profile')
   getProfile(@Request() req) {
     return req.user;
   }

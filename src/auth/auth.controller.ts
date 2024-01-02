@@ -24,8 +24,4 @@ export class AuthController {
         throw new HttpException("User doesn't exist", HttpStatus.NOT_FOUND)
     }
   }
-
-  @UseGuards(JwtStrategy)
-  @Get('profile')
-  async profile() {}
 }
