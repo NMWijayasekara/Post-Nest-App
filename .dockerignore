@@ -1,6 +1,5 @@
-Dockerfile
 .env
-.dockerignore;
-node_modules;
-npm - debug.log;
-dist;
+.dockerignore
+node_modules
+npm-debug.log
+dist
