@@ -10,13 +10,13 @@ async function bootstrap() {
     .setTitle('NestJs Post App API')
     .setDescription('Simple API to create posts')
     .setVersion('1.0')
-    .addServer('http://localhost:3000/', 'Local environment')
+    .addServer('http://localhost:8080/', 'Local environment')
     .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(3000);
+  await app.listen(8080);
 }
 bootstrap();
