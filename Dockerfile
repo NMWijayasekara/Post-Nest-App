@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Generate Prisma Client
-Run npx prisma generate
+RUN npx prisma generate
 
 # Build Nest Js App
 RUN npm run build
