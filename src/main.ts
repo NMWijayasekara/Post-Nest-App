@@ -11,6 +11,10 @@ async function bootstrap() {
     .setDescription('Simple API to create posts')
     .setVersion('1.0')
     .addServer('http://localhost:8080/', 'Local environment')
+    .addServer(
+      'https://post-nest-app-dta6mb46qq-uc.a.run.app/',
+      'Hosted Server',
+    )
     .addBearerAuth()
     .build();
 
