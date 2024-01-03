@@ -3,10 +3,8 @@ import { IsNotEmptyObject } from 'class-validator';
 
 export class CreatePostDto {
   @ApiProperty()
-  @IsNotEmptyObject()
   title: string;
 
   @ApiProperty()
-  @IsNotEmptyObject()
   body: string;
 }
