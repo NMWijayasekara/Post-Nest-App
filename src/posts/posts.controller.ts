@@ -36,14 +36,17 @@ export class PostsController {
   // View Post by ID
   @ApiOperation({ summary: 'Give post according to id' })
   @ApiParam({
-    name: 'Post Id',
-    type: 'String',
+    name: 'id',
+    required: true,
+    schema: {
+      type: 'integer',
+    },
   })
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
   @Get(':id')
   async viewPost(@Param('id') postId) {
-    return await this.postsService.getPostById(postId);
+    return await this.postsService.getPostById(parseInt(postId));
   }
 
   // View User Post
@@ -75,8 +78,11 @@ export class PostsController {
   // Update Post
   @ApiOperation({ summary: 'Updates Post' })
   @ApiParam({
-    name: 'Post Id',
-    type: 'String',
+    name: 'id',
+    required: true,
+    schema: {
+      type: 'integer',
+    },
   })
   @ApiBody({
     description: 'Post Details',
@@ -86,7 +92,7 @@ export class PostsController {
   @UseGuards(AuthGuard(), EditiorGuard)
   @Put(':id')
   async updatePost(@Param('id') postId, @Body() data: PostDetailsDto) {
-    const new_post = await this.postsService.updatePost(postId, {
+    const new_post = await this.postsService.updatePost(parseInt(postId), {
       title: data.title,
       body: data.body,
     });
@@ -96,18 +102,17 @@ export class PostsController {
   // Delete Post
   @ApiOperation({ summary: 'Deletes Post' })
   @ApiParam({
-    name: 'Post Id',
-    type: 'String',
-  })
-  @ApiBody({
-    description: 'Post Details',
-    type: PostDetailsDto,
+    name: 'id',
+    required: true,
+    schema: {
+      type: 'integer',
+    },
   })
   @ApiBearerAuth()
   @UseGuards(AuthGuard(), EditiorGuard)
   @Delete(':id')
-  async deletePost(@Param('id') postId, @Body() data: PostDetailsDto) {
-    const response = await this.postsService.deletePost(postId);
+  async deletePost(@Param('id') postId) {
+    const response = await this.postsService.deletePost(parseInt(postId));
     return response;
   }
 }
