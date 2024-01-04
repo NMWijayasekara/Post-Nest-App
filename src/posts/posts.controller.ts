@@ -62,8 +62,7 @@ export class PostsController {
     type: PostDetailsDto,
   })
   @ApiBearerAuth()
-  @UseGuards(AuthGuard())
-  @UseGuards(EditiorGuard)
+  @UseGuards(AuthGuard(), EditiorGuard)
   @Post('')
   async createPost(@Body() data: PostDetailsDto, @Request() req) {
     const new_post = await this.postsService.createPost(req.user.id, {
@@ -84,8 +83,7 @@ export class PostsController {
     type: PostDetailsDto,
   })
   @ApiBearerAuth()
-  @UseGuards(AuthGuard())
-  @UseGuards(EditiorGuard)
+  @UseGuards(AuthGuard(), EditiorGuard)
   @Put(':id')
   async updatePost(@Param('id') postId, @Body() data: PostDetailsDto) {
     const new_post = await this.postsService.updatePost(postId, {
@@ -106,7 +104,7 @@ export class PostsController {
     type: PostDetailsDto,
   })
   @ApiBearerAuth()
-  @UseGuards(AuthGuard())
+  @UseGuards(AuthGuard(), EditiorGuard)
   @Delete(':id')
   async deletePost(@Param('id') postId, @Body() data: PostDetailsDto) {
     const response = await this.postsService.deletePost(postId);

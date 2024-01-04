@@ -21,8 +21,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @ApiBearerAuth()
-  @UseGuards(AuthGuard())
-  @UseGuards(AdminGuard)
+  @UseGuards(AuthGuard(), AdminGuard)
   @ApiBody({
     description: 'User Details',
     type: RegisterUserDto,

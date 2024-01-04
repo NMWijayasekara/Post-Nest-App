@@ -15,6 +15,7 @@ export class UsersService {
       id: new_user.id,
       name: new_user.name,
       email: new_user.email,
+      role: new_user.role
     };
   }
 
@@ -25,7 +26,8 @@ export class UsersService {
         id: true,
         email: true,
         name: true,
-        posts: true
+        posts: true,
+        role: true
       },
     });
 
