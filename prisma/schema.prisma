@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -15,14 +15,21 @@ model User {
   name     String
   email    String @unique
   password String
+  role     Role   @default(EDITOR)
   posts    Post[]
 }
 
+enum Role {
+  ADMIN
+  EDITOR
+}
+
 model Post {
-  id        Int      @id @default(autoincrement())
+  id        Int      @id @default(sequence())
   title     String
   body      String
   userId    String
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

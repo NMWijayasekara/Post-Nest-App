@@ -9,15 +9,19 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
-import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Prisma } from '@prisma/client';
 import { LoginDto, RegisterUserDto } from './auth.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { AdminGuard } from './admin.guard';
 
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard(), AdminGuard)
   @ApiBody({
     description: 'User Details',
     type: RegisterUserDto,
