@@ -19,6 +19,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { PostDetailsDto } from './posts.dto';
+import { EditiorGuard } from 'src/auth/editor.guard';
 
 @ApiTags('Posts')
 @Controller('posts')
@@ -62,6 +63,7 @@ export class PostsController {
   })
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
+  @UseGuards(EditiorGuard)
   @Post('')
   async createPost(@Body() data: PostDetailsDto, @Request() req) {
     const new_post = await this.postsService.createPost(req.user.id, {
@@ -83,6 +85,7 @@ export class PostsController {
   })
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
+  @UseGuards(EditiorGuard)
   @Put(':id')
   async updatePost(@Param('id') postId, @Body() data: PostDetailsDto) {
     const new_post = await this.postsService.updatePost(postId, {
